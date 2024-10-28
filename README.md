@@ -2,7 +2,7 @@
 
 This project covers the installation, configuration, and administration of Domain Name System (BIND) and Dynamic Host Configuration Protocol (DHCP) servers on a CentOS 9 virtual machine running in Oracle VirtualBox. The setup provides dynamic IP management and domain name resolution services for a network within a virtualized environment.
 
-**Table of Contents:**
+##**Table of Contents:**
 Project Overview
 Requirements
 Architecture
@@ -12,24 +12,24 @@ Administration
 Testing and Validation
 Troubleshooting
 
-**Project Overview**
+##**Project Overview**
 The project demonstrates how to set up a DNS server using BIND and a DHCP server using ISC-DHCP on a CentOS 9 virtual machine, managed through VirtualBox. The DNS server handles domain name resolution, while the DHCP server dynamically assigns IP addresses to network devices in the virtualized environment.
 
-**Requirements**
+##**Requirements**
 VirtualBox: To create and manage virtual machines.
 CentOS 9: As the operating system for the virtual machine.
 BIND (Berkeley Internet Name Domain): For DNS server configuration.
 ISC-DHCP Server: For DHCP service.
 Basic knowledge of Linux, VirtualBox, and networking protocols (DNS, DHCP, TCP/IP).
 
-**Architecture**
+##**Architecture**
 The architecture involves:
 A CentOS 9 virtual machine hosted in VirtualBox.
 BIND for handling DNS queries and resolving domain names.
 ISC-DHCP server for managing IP leases and network configurations.
 A local virtual network inside VirtualBox to simulate real-world network scenarios.
 
-**Installation**
+##**Installation**
 Step 1: Set Up CentOS VM in VirtualBox
 Install VirtualBox on your system and create a CentOS 9 virtual machine.
 Allocate sufficient resources (2GB RAM, 2 CPU cores) for smooth operations.
@@ -39,7 +39,7 @@ bash sudo yum install bind bind-utils -y
 Step 3: Install ISC-DHCP Server
 bash sudo yum install dhcp-server -y
 
-**Configuration**
+##**Configuration**
 Step 1: Configure BIND for DNS
 Edit the /etc/named.conf file to define:
 Forward and reverse DNS zones.
@@ -54,12 +54,12 @@ Example configuration: bash subnet 192.168.56.0 netmask 255.255.255.0 { range 19
 Step 3: Start and Enable Services
 bash sudo systemctl enable named sudo systemctl start named sudo systemctl enable dhcpd sudo systemctl start dhcpd
 
-**Administration**
+##**Administration**
 DNS Server: Use rndc reload to reload DNS zones after editing zone files.
 DHCP Server: Monitor lease assignments and update configurations as needed. Ensure the correct IP range is defined.
 Logs: Check /var/log/messages and /var/log/named for troubleshooting and monitoring server health.
 
-**Testing and Validation**
+##**Testing and Validation**
 Step 1: Test DNS Queries
 On a client machine within the same network, test DNS resolution: bash dig @<DNS-Server-IP> <domain-name>
 Step 2: Test DHCP Lease Assignment
